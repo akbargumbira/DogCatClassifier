@@ -85,8 +85,6 @@ def load_dataset(dataset_path):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Preprocess images into dataset')
     parser.add_argument(
-        '-p', '--problem', help='Problem - uiuc or kaggle', required=True)
-    parser.add_argument(
         '-a', '--alg', help='Descriptors algorithm', required=True)
     parser.add_argument(
         '-i', '--input', help='Input images root directory', required=True)
@@ -123,12 +121,7 @@ if __name__ == '__main__':
     # Do the preprocessing and serialize it
     print 'Preprocessing images....'
     start = time.time()
-    if args['problem'].lower() == 'uiuc':
-        dataset, data_label = get_uiuc_training_data(
-            detector, args['cbook'], image_dir)
-    elif args['problem'].lower() == 'kaggle':
-        id, dataset, data_label = get_cat_dog_data(
-            detector, args['cbook'], image_dir)
+    id, dataset, data_label = get_cat_dog_data(detector, args['cbook'], image_dir)
     serialize_object((dataset, data_label), output)
     print 'Elapsed time: %s sec' % (time.time() - start)
 
