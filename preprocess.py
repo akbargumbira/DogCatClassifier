@@ -52,7 +52,15 @@ def get_histogram(feature_detector, bow_extractor, image):
 
 def get_cat_dog_data(feature_detector, codebook_path, image_dir):
     """Represent cat vs dog kaggle training images as histogram of visual
-    codeword accompanied by the label."""
+    codeword accompanied by the label.
+
+    :param feature_detector: The feature detector object.
+    :type feature_detector: object
+
+    :param codebook_path: The full path to the codebook file.
+    :type codebook: str
+
+    """
     codebook = load_codebook(codebook_path)
     bow_extractor = get_bow_extractor(feature_detector, codebook)
     # Training data
