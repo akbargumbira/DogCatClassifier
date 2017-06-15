@@ -6,3 +6,4 @@ images/
 image/
 
 *.ipynb_checkpoints
+*training_data.dat
